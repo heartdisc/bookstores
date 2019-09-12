@@ -1,12 +1,24 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div id="app" class="container">
+    <top-header></top-header>
+    <top-bar></top-bar>
     <router-view/>
   </div>
 </template>
+
+<script>
+    import TopHeader from '@/layouts/top-header.vue';
+    import TopBar from '@/layouts/top-bar.vue';
+
+    export default {
+        name: 'App',
+
+        components: {
+            TopHeader,
+            TopBar,
+        },
+    };
+</script>
 
 <style>
 #app {
