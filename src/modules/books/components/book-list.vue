@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-footer">
                         <router-link :to="{ name: 'book-detail', params: { id: book.id } }" class="btn btn-secondary mr-2">Read More</router-link>
-                        <router-link :to="{ name: 'book-edit', params: { id: book.id } }" class="btn btn-secondary">Edit</router-link>
+
                     </div>
                 </div>
 

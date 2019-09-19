@@ -13,7 +13,7 @@
                 <p class="card-text">{{ book.desc }}</p>
 
                 <p>
-                    <router-link :to="{ name: 'book-list' }" class="btn btn-secondary mr-2">Back</router-link>
+
                     <router-link :to="{ name: 'book-edit', params: { id: book.id } }" class="btn btn-secondary">Edit</router-link>
                 </p>
 
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import bookService from '../common/book.service'
+    import bookService from '../common/book.service';
     export default {
         name: 'BookDetail',
 
@@ -36,7 +36,7 @@ import bookService from '../common/book.service'
                     desc: 'desc 1',
                     comments: [],
                 },
-            }
+            };
         },
 
         methods: {
@@ -48,11 +48,10 @@ import bookService from '../common/book.service'
                 } catch (error) {
                     console.log(error);
                 }
-
-            }
+            },
         },
 
-        mounted () {
+        mounted() {
             this.getBook(this.$route.params.id);
         },
     };

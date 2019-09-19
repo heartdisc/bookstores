@@ -9,14 +9,14 @@
                 <label for="desc">Description</label>
                 <textarea  v-model="book.desc" name="desc" cols="30" rows="10" class="form-control"></textarea>
             </div>
-            <button v-if="!flagEdit" type="submit" class="btn btn-primary" @click="createBook">Create</button>
-            <button v-if="flagEdit" type="submit" class="btn btn-primary" @click="updateBook">Update</button>
+            <button v-if="!flagEdit" type="submit" class="btn btn-primary mr-2" @click="createBook">Create</button>
+            <button v-if="flagEdit" type="submit" class="btn btn-primary mr-2" @click="updateBook">Update</button>
         </form>
     </div>
 </template>
 
 <script>
-import bookService from '../common/book.service';
+    import bookService from '../common/book.service';
     export default {
         name: 'BookForm',
 
@@ -27,9 +27,8 @@ import bookService from '../common/book.service';
                     desc: '',
                 },
                 flagEdit: false,
-            }
+            };
         },
-
         methods: {
             async createBook() {
                 try {
@@ -40,27 +39,26 @@ import bookService from '../common/book.service';
                 }
 
             },
+
             async getBook(bookId) {
                 try {
                     const res = await bookService.getItem(bookId);
                     this.book = res.data;
-
                 } catch (error) {
                     console.log(error);
                 }
-
             },
+
             async updateBook(bookId) {
                 try {
                     const res = await bookService.update(bookId, this.book);
-                    console.log(res)
+                    console.log(res);
                 } catch (error) {
                     console.log(error);
                 }
-            }
+            },
         },
-
-        mounted () {
+        mounted() {
             if (this.$route.name === 'book-edit') {
                 this.getBook(this.$route.params.id);
                 this.flagEdit = true;
