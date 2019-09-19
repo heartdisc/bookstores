@@ -1,6 +1,7 @@
 // const VpsLayout = () => import('@/layouts/VpsLayout.vue');
 const BookList = () => import('./components/book-list.vue');
 const BookDetail = () => import('./components/book-detail.vue');
+const BookForm = () => import('./components/book-form.vue');
 
 const routes = [
     {
@@ -9,9 +10,19 @@ const routes = [
         component: BookList,
     },
     {
+        path: '/books/create',
+        name: 'book-create',
+        component: BookForm,
+    },
+    {
         path: '/books/:id',
         name: 'book-detail',
         component: BookDetail,
+    },
+    {
+        path: '/books/:id/edit',
+        name: 'book-edit',
+        component: BookForm,
     },
 ];
 
