@@ -5,7 +5,8 @@
         <div class="row ">
             <div class="col-md-3 d-flex align-items-stretch mb-3" v-for="book in books" :key="book.id">
                 <div class="card ">
-                    <img :src="book.pic" class="card-img-top" alt="book cover">
+                    <img v-if="book.pic" :src="book.pic" class="card-img-top" alt="book cover">
+                    <img v-if="!book.pic" src="@/assets/images/placeholder-image120x120.png" class="card-img-top" alt="book cover">
 
                     <div class="card-body">
                         <h5 class="card-title">{{ book.title }}</h5>
