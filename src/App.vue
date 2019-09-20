@@ -22,7 +22,7 @@
 
 <style>
 #app {
-  font-family: 'IBM Plex Thai', Helvetica, Arial, sans-serif;
+  font-family: 'sarabun', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */

@@ -7,6 +7,9 @@
             <router-link
                 class="p-2 text-muted"
                 :to="{name: 'book-create' }">เพิ่มหนังสือ</router-link>
+            <router-link
+                class="p-2 text-muted"
+                :to="{name: 'book-edit', params: { id: 2 } }">แก้ไขหนังสือ</router-link>
         </nav>
     </div>
 </template>

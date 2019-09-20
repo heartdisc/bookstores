@@ -7,10 +7,19 @@
             </div>
             <div class="form-group">
                 <label for="desc">Description</label>
-                <textarea  v-model="book.desc" name="desc" cols="30" rows="10" class="form-control"></textarea>
+                <textarea v-model="book.desc" name="desc" cols="30" rows="10" class="form-control"></textarea>
             </div>
-            <button v-if="!flagEdit" type="submit" class="btn btn-primary mr-2" @click="createBook">Create</button>
-            <button v-if="flagEdit" type="submit" class="btn btn-primary mr-2" @click="updateBook">Update</button>
+            <div class="form-group">
+                <label for="detail">Detail</label>
+                <textarea v-model="book.detail" name="detail" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pic">Picture</label>
+                <input type="text" v-model="book.pic" name="pic" class="form-control">
+            </div>
+            <button v-if="!flagEdit" type="button" class="btn btn-primary mr-2" @click="createBook">Create</button>
+            <router-link v-if="!flagEdit" :to="{ name: 'book-list' }" class="btn btn-light mr-2">Back</router-link>
+            <button v-if="flagEdit" type="button" class="btn btn-primary mr-2" @click="updateBook(book.id)">Update</button>
         </form>
     </div>
 </template>
@@ -25,15 +34,39 @@
                 book: {
                     title: '',
                     desc: '',
+                    detail: '',
+                    pic: '',
                 },
                 flagEdit: false,
             };
         },
+
+        watch: {
+            // call again the method if the route changes
+            $route: 'fetchData',
+        },
+
         methods: {
+            fetchData() {
+                if (this.$route.name === 'book-edit') {
+                    this.getBook(this.$route.params.id);
+                    this.flagEdit = true;
+                } else {
+                    this.book = {
+                        title: '',
+                        desc: '',
+                        detail: '',
+                        pic: '',
+                    };
+                    this.flagEdit = false;
+                }
+            },
+
             async createBook() {
                 try {
                     const res = await bookService.create(this.book);
                     console.log(res);
+                    this.$router.push({ name: 'book-list'});
                 } catch (error) {
                     console.log(error);
                 }
@@ -53,21 +86,15 @@
                 try {
                     const res = await bookService.update(bookId, this.book);
                     console.log(res);
+                    this.$router.push({ name: 'book-detail', params: { id: bookId }});
                 } catch (error) {
                     console.log(error);
                 }
             },
         },
+
         mounted() {
-            if (this.$route.name === 'book-edit') {
-                this.getBook(this.$route.params.id);
-                this.flagEdit = true;
-            } else {
-                this.book = {
-                    title: '',
-                    desc: '',
-                };
-            }
+            this.fetchData();
         },
     };
 </script>
