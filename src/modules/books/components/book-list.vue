@@ -5,8 +5,7 @@
         <div class="row ">
             <div class="col-md-3 d-flex align-items-stretch mb-3" v-for="book in books" :key="book.id">
                 <div class="card ">
-                    <img v-if="book.pic" :src="book.pic" class="card-img-top" alt="book cover">
-                    <img v-if="!book.pic" src="@/assets/images/placeholder-image120x120.png" class="card-img-top" alt="book cover">
+                    <img :src="book.pic || defaultImage" class="card-img-top" alt="book cover">
 
                     <div class="card-body">
                         <h5 class="card-title">{{ book.title }}</h5>
@@ -27,6 +26,7 @@
 
 <script>
     import bookService from '../common/book.service';
+    import defaultImage from '@/assets/images/placeholder-image120x120.png';
 
     export default {
         name: 'BookList',
@@ -50,6 +50,7 @@
                         desc: 'desc 3',
                     },
                 ],
+                defaultImage,
             };
         },
 
@@ -73,6 +74,12 @@
                 } catch (error) {
                     console.log(error);
                 }
+            },
+        },
+
+        computed: {
+            source(pic) {
+                return pic || defaultImage;
             },
         },
 

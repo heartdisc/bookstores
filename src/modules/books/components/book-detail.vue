@@ -4,13 +4,13 @@
         <div class="row mt-5">
             <div class="col-md-4 mb-3">
                 <div class="card ">
-                    <img :src="book.pic" class="card-img-top" alt="book cover">
+                    <img :src="source" class="card-img-top" alt="book cover">
                 </div>
 
             </div>
             <div class="col-md-8 mb-3">
                 <h2 class="card-title mb-3">{{ book.title }}</h2>
-                <p class="card-text">{{ book.detail }}</p>
+                <p class="card-text book-detail" >{{ book.detail }}</p>
 
                 <p>
                     <router-link :to="{ name: 'book-edit', params: { id: book.id } }" class="btn btn-primary mr-2">Edit</router-link>
@@ -25,6 +25,7 @@
 
 <script>
     import bookService from '../common/book.service';
+    import defaultImage from '@/assets/images/placeholder-image120x120.png';
     export default {
         name: 'BookDetail',
 
@@ -52,12 +53,20 @@
             },
         },
 
+        computed: {
+            source() {
+                return this.book.pic || defaultImage;
+            },
+        },
+
         mounted() {
             this.getBook(this.$route.params.id);
         },
     };
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss" >
+.book-detail {
+    white-space: pre-line;
+}
 </style>
