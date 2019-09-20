@@ -1,13 +1,13 @@
 <template>
     <div>
-        <form >
+        <form class="mb-4">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" v-model="book.title" name="title" class="form-control" autofocus>
             </div>
             <div class="form-group">
                 <label for="desc">Description</label>
-                <textarea v-model="book.desc" name="desc" cols="30" rows="10" class="form-control"></textarea>
+                <textarea v-model="book.desc" name="desc" cols="30" rows="5" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label for="detail">Detail</label>
@@ -65,10 +65,21 @@
             async createBook() {
                 try {
                     const res = await bookService.create(this.book);
+                    this.$notify({
+                            group: 'alert',
+                            type: 'success',
+                            title: 'Success',
+                            text: 'Book created was successful!',
+                        });
                     console.log(res);
                     this.$router.push({ name: 'book-list'});
                 } catch (error) {
-                    console.log(error);
+                    this.$notify({
+                            group: 'alert',
+                            type: 'danger',
+                            title: 'Error',
+                            text: 'Book can\'t create!',
+                        });
                 }
 
             },
@@ -85,10 +96,21 @@
             async updateBook(bookId) {
                 try {
                     const res = await bookService.update(bookId, this.book);
-                    console.log(res);
+                    this.$notify({
+                            group: 'alert',
+                            type: 'success',
+                            title: 'Success',
+                            text: 'Book updated was successful!',
+                        });
+                    // console.log(res);
                     this.$router.push({ name: 'book-detail', params: { id: bookId }});
                 } catch (error) {
-                    console.log(error);
+                    this.$notify({
+                            group: 'alert',
+                            type: 'danger',
+                            title: 'Error',
+                            text: 'Book can\'t update!',
+                        });
                 }
             },
         },
