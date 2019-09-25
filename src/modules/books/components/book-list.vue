@@ -8,12 +8,12 @@
                     <img :src="book.pic || defaultImage" class="card-img-top" alt="book cover">
 
                     <div class="card-body">
-                        <h5 class="card-title">{{ book.title }}</h5>
+                        <router-link tag="h5" :to="{ name: 'book-detail', params: { id: book.id } }" class="card-title link">{{ book.title }}</router-link>
                         <p class="card-text">{{ book.desc }}</p>
                     </div>
                     <div class="card-footer">
-                        <router-link :to="{ name: 'book-detail', params: { id: book.id } }" class="btn btn-secondary mr-2">Read More</router-link>
-                        <router-link :to="{ name: 'book-edit', params: { id: book.id } }" class="btn btn-secondary">Edit</router-link>
+                        <!-- <router-link :to="{ name: 'book-detail', params: { id: book.id } }" class="btn btn-secondary mr-2">Read More</router-link> -->
+                        <router-link :to="{ name: 'book-edit', params: { id: book.id } }" class="btn btn-light float-right">Edit</router-link>
                     </div>
                 </div>
 

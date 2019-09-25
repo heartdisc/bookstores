@@ -1,4 +1,3 @@
-// const VpsLayout = () => import('@/layouts/VpsLayout.vue');
 const BookList = () => import('./components/book-list.vue');
 const BookDetail = () => import('./components/book-detail.vue');
 const BookForm = () => import('./components/book-form.vue');

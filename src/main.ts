@@ -8,7 +8,8 @@ Vue.config.productionTip = false;
 Vue.use(Notifications);
 
 // Importing the global css file
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import '@/assets/scss/_variables.scss';
+import 'bootstrap/scss/bootstrap.scss';
 import '@/assets/scss/blog.css';
 import '@/assets/fonts/sr-rojee-np/font.css';
 import '@/assets/fonts/sarabun/font.css';
