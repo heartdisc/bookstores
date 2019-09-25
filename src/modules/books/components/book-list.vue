@@ -3,12 +3,13 @@
         <h2 class="text-center my-4">หนังสือออกใหม่</h2>
 
         <div class="row ">
-            <div class="col-md-3 d-flex align-items-stretch mb-3" v-for="book in books" :key="book.id">
+            <div class="col-md-3 d-flex align-items-stretch mb-4" v-for="book in books" :key="book.id">
                 <div class="card ">
                     <img :src="book.pic || defaultImage" class="card-img-top" alt="book cover">
 
                     <div class="card-body">
                         <router-link tag="h5" :to="{ name: 'book-detail', params: { id: book.id } }" class="card-title link">{{ book.title }}</router-link>
+                        <div class="text-muted mb-3">{{ book.author }}</div>
                         <p class="card-text">{{ book.desc }}</p>
                     </div>
                     <div class="card-footer">

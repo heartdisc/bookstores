@@ -11,6 +11,10 @@
                         <input type="text" v-model="book.title" name="title" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" v-model="book.author" name="author" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
                         <label for="desc">Description</label>
                         <textarea v-model="book.desc" name="desc" cols="30" rows="4" class="form-control"></textarea>
                     </div>
@@ -41,6 +45,7 @@
             return {
                 book: {
                     title: '',
+                    author: '',
                     desc: '',
                     detail: '',
                     pic: '',
@@ -62,6 +67,7 @@
                 } else {
                     this.book = {
                         title: '',
+                        author: '',
                         desc: '',
                         detail: '',
                         pic: '',

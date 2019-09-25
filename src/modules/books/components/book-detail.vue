@@ -10,6 +10,7 @@
             </div>
             <div class="col-md-8 mb-3">
                 <h2 class="card-title mb-3">{{ book.title }}</h2>
+                <div class="font-weight-bold mb-3">{{ book.author }}</div>
                 <p class="card-text book-detail" >{{ book.detail }}</p>
 
                 <p>
@@ -34,6 +35,7 @@
                 book: {
                     id: 1,
                     title: 'Book 1',
+                    author: '',
                     desc: 'desc 1',
                     detail: 'desc 1',
                     comments: [],
